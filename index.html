@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
+    <script src="js/index.js"></script>
+
+    <title>Pokedex</title>
+
+</head>
+
+<body>
+    <div class="container align-self-center ">
+        <div class="row ">
+            <div class="col-sm-5 side-left sombra_container">
+                <div id='bigCircle'>
+                    <div id='blueCircle'>
+                        <div id="whiteCircle"></div>
+                    </div>
+                </div>
+                <div id="redDot"></div>
+                <div id="yellowDot"></div>
+                <div id="greenDot"></div>
+
+                <div class="row box-pok">
+ 
+                    <nav aria-label="Page navigation">
+                        <ul class="pagination">
+                            <li class="page-item"><a class="page-link page-1" href="#">Previous</a></li>
+                            <li class="page-item"><a class="page-link page-2" href="#">Next</a></li>
+                        </ul>
+                    </nav>
+                </div>
+
+            </div> <!--End side-left -->
+            <div class="col-sm col-eixo">
+                
+            </div>
+            <!-- right side -->
+            <div class="col-sm-5 side-right">
+
+                <div class="row">
+                    <div class="col col-sm-10">
+                        <div class="box-right">
+                            <div id="screen">
+                                <div id="redButton1" class="redButton">
+                                </div>
+                                <div id="redButton2" class="redButton">
+                                </div>
+                                <div id="display">
+                                    <p class="textGreen">Um pokemon deve ser selecionado na lista de pokemons</p>
+                                    <img src="pokbola.png" id="pokbola"  class="pokemonImg">
+                                </div>
+                                <div id="redCircle" class="redButton"></div>
+                            </div>
+                        </div>
+                        <div class="button-right">
+                            <button type="button" class="btn btn-primary btn-img" id="front">Front</button>
+                            <button type="button" class="btn btn-primary btn-img" id="back">Back</button>
+                            <button type="button" class="btn btn-primary btn-img" id="shiny_f">Shiny_f</button>
+                            <button type="button" class="btn btn-primary btn-img" id="shiny_b">Shiny_b</button>
+
+                        </div>
+
+                    </div>
+                    
+                </div> <!--end-row -->
+                
+                <div class="row">
+                        <div class="col-sm btn-modal">
+                            <div class="blackButton" id="one">Status</div>
+                            <div class="blackButton" id="two">Pokedex</div>
+                        </div>
+                        <!-- <div class="col col-sm-4 test">test2</div>  -->
+                        <div class="col col-sm-4 ">
+                            <div id="yellowTriangleR"></div>
+                        </div>
+                    </div>
+    
+                    <div class="row">
+                        <div id="blueButtons1">
+                            <div class="blueButton" id="grafico"><span>1</span></div>
+                            <div class="blueButton" id="mov">2</div>
+                            <div class="blueButton" id="balls">3</div>
+                            <div class="blueButton" id="search">4</div>
+                        </div>
+    
+                    </div>
+                    <div class="row">
+                        <div id="blueButtons2">
+                            <div class="blueButton"></div>
+                            <div class="blueButton"></div>
+                            <div class="blueButton"></div>
+                            <div class="blueButton"></div>
+                        </div>
+    
+                    </div>
+                </div><!--end-row -->
+                <div class="row">
+                        <div class="col col-sm-9 cover " id="cover">
+    
+                            <div id="logo"></div>
+    
+                            <div id="yellowTriangle">
+                                <div id="innerTriangle"></div>
+                            </div>
+    
+                        </div>                     
+                    </div> 
+            </div> <!-- Fim side-right-->
+        </div>
+        
+    </div>
+
+    <div class="container">
+    
+        <!-- ========================================================================================================== -->
+        <!--Exibe as características e estatíscas de um pokemon específico btn-status  -->
+        <div class="row">
+            <div class="col col-12">
+                <div id="stats" style="border: 2px solid black">
+                    <!-- Recebe as estatíscas via jquery -->
+                    <span><strong>Skills: </strong></span>
+                    <!-- Recebe as Skills via jquery -->
+                    <ul id="skills"></ul>
+                    <span><strong>Types: </strong></span>
+                    <!-- Recebe as types via jquery -->
+                    <ul id="types"></ul>
+                    
+                    <div class="descriptionS">
+                        <p>Description</p>
+                        <p class="descriptionText"></p>
+                    </div>
+
+                    <div id="yellowTriangleS"></div>
+                </div>
+
+            </div>
+        </div>
+        <!-- ========================================================================================================== -->   
+        <!-- Abre uma aba com os pokemons de maior ataque btn-pokedex-->
+        <div class="row">
+
+            <div class="col col-12">
+                <div class="modalPokedex" id="modalPokedex">
+                    <h3>Pokemons com maior ataque</h3>
+                    <hr>
+
+                    <div class="row">
+                        <div class="col col-sm-6">
+                            <div class="row" id="boxPokStrongs"></div>
+                        </div>
+                        <div class="col col-6">
+                            <div class="row">
+                                <div class="fullForce">
+                                    <span>Total Stats</span>
+                                    <p class="heightText" id="totalStats"></p>
+                                </div>                            
+                            </div>
+
+                            <div class="row">
+                                <div class="fullForce">
+                                    <span>Total Weight</span>
+                                    <p class="heightText" id="totalWeight"></p>
+                                </div>                            
+                            </div>
+
+                            <div class="row">
+                                <div class="fullForce">
+                                    <span>Total Experience</span>
+                                    <p class="heightText" id="totalHeight"></p>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="descriptionTotal">
+                                    <p>Warning!</p>
+                                    <p class="descriptionText">
+                                        <b>Treinador</b>, foi listado acima os seis pokemons mais fortes e foi realizada a somatórias do status desses pokemons.   
+
+                                    </p>
+                                </div>
+
+                            </div>
+
+                            <div id="yellowTriangleTotal"></div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            
+            </div>
+
+        </div>
+        <!-- ========================================================================================================== -->   
+        <!-- Mostra o grafico das estatíscas do pokemon -->
+        <div class="row">
+            <div class="col col-12">
+                <div class="statsMain" id="graficoStatsFather">
+                    <div id="graficoStats">
+                        <!-- A tag abaixo é adicionada via js -->
+                        <!-- <canvas id="myChart" width="400" height="400"></canvas>-->
+                    </div> 
+                    <div class="blackTriangle" id="yellowTriangleGra"></div>                    
+                </div>
+
+            </div>
+        </div>
+
+        <!-- ========================================================================================================== -->
+        <!--Exibe os movimentos de um pokemon específico  -->
+        <div class="row">
+            <div class="col col-12">
+                <div class="statsMain" id="movsFather">
+                    <div id="movs" style="border: 2px solid black">
+                        <ul></ul>
+                    </div>
+                    <div class="row">
+                        <div class="col col-sm-6">
+                            <nav aria-label="Page navigation">
+                                
+                                <ul class="pagination">
+                                    <li class="page-item"><a class="page-link pageM-1" href="#">Previous</a></li>
+                                    <li class="page-item"><a class="page-link pageM-2" href="#">Next</a></li>
+                                </ul>
+                            </nav>
+                        </div>
+                        <div class="col col-sm-6">
+                            <div class="blackTriangle" id="yellowTriangleM"></div>
+                        </div>
+                    </div>
+
+                    
+                </div>
+
+            </div>
+        </div>
+        <!-- ========================================================================================================== -->
+        <!--Exibe as PokeBalls  -->
+        <div class="row">
+            <div class="col col-12">
+                <div class="statsMain" id="pokeBallsFather">
+                    <div id="pokeBalls">
+                        <ul></ul>
+                    </div>
+                    <div class="descriptionP">
+                        <!-- adicionado via jquery -->
+                    </div>
+                    
+                    
+                    <div class="blackTriangle" id="yellowTriangleP"></div>
+                                        
+                </div>
+
+            </div>
+        </div>
+        <!-- ========================================================================================================== -->
+        <!--Pesquisar pokemon por nome ou id  -->
+        <div class="row">
+            <div class="col col-12">
+                <div class="statsMain" id="searchPokeFather">
+                    
+                    <nav class="navbar navbar-light ">
+                        <h4>Pesquisar pokemon</h4>
+                        <form class="form-inline">
+                          <input class="form-control mr-sm-2" type="search" id="inpSearch" placeholder="Name or Id" aria-label="Search">
+                          <button type="button" class="btn btn-outline-secondary my-2 my-sm-0 text-dark" id="searchButton">Search</button>
+                        </form>
+                    </nav>
+
+                    <div class="imgSearch">
+
+                    </div>
+                    <div class="mainData">
+
+                    </div>
+                    <div class="ablitiesData">
+                        <!-- <h6>Abilities Pokemon</h6> -->
+                        <ul></ul>
+                    </div>
+                    <div class="typesData">
+                        <!-- <h6>Types Pokemon</h6> -->
+                        <ul></ul>
+                    </div>
+                    
+                    <div class="blackTriangle" id="closeSearch"></div>
+                    
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+</body>
+
+</html>
