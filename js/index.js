@@ -543,12 +543,31 @@ $(document).ready(function () {
         $('.pokStrongs').hover(function (){
             let pos = $(this).offset();
             let width = $(this).width();
-    
-            $('.boxPokvalue').css({
-                top: pos.top - 220,
-                left: width + pos.left - 650,
-                display: 'block'
-            });
+        
+            if($width <= 560){
+                // pos = $(this).offset();
+                $('.boxPokvalue').css({
+                    top: pos.top - 600,
+                    left: pos.left + 30,
+                    display: 'block'
+                });
+            }else if($width <= 800){
+                // pos = $(this).offset();
+                $('.boxPokvalue').css({
+                    top: pos.top - 150,
+                    left: pos.left - 350,
+                    display: 'block'
+                });
+            }else{
+                // console.log("maior: "+$width);
+                // pos = $(this).offset();
+                $('.boxPokvalue').css({
+                    top: pos.top - 150,
+                    left: pos.left - 690,
+                    display: 'block'
+                });
+            }
+
 
             var id = $(this).attr('id');
 
@@ -1071,7 +1090,6 @@ window.onresize=function() {
 }
 
 function getDimensions() {
-    
     largura = window.innerWidth;
     var altura = window.innerHeight;
     return largura;
